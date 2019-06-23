@@ -22,11 +22,11 @@
         <!-- Styles -->
         {{-- Laravel標準で用意されているCSSと自作cssの読み込み --}}
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
     </head>
     <body>
         <div id="app">
-           {{-- ナビゲーションバ- --}}
+           <!--ナビゲーションバ- -->
             <nav class="navbar navbar-expand-md navbar-dark navbar-laravel">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">

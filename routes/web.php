@@ -16,8 +16,12 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'admin'], function() {
-    Route::get('post/create', 'Admin\PostController@add');
-});
+    Route::get('post/create', 'Admin\PostController@add')->middleware('auth'); 
+});      
+//->middleware('auth') ログインしていない状態で管理画面にアクセスしようとしたときに、ログイン画面にリダイレクトするように設定
 
 Route::get('admin/profile/create', 'Admin\ProfileController@add');
 Route::get('admin/profile/edit', 'Admin\ProfileController@edit');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
