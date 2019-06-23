@@ -9,6 +9,6 @@ class PostController extends Controller
 {
   public function add()
   {
-    return view('admin.news.create');
+    return view('admin.post.create');
   }
 }
