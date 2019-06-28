@@ -34,14 +34,23 @@
                                 <th width="10%">ID</th>
                                 <th width="20%">タイトル</th>
                                 <th width="50%">本文</th>
+                                <th width="10%">編集</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($posts as $post)
+                            @foreach($posts as $posts)
                                 <tr>
-                                    <th>{{ $post->id }}</th>
-                                    <td>{{ str_limit($post->title, 100) }}</td>
-                                    <td>{{ str_limit($post->body, 250) }}</td>
+                                    <th>{{ $posts->id }}</th>
+                                    <td>{{ str_limit($posts->title, 100) }}</td>
+                                    <td>{{ str_limit($posts->body, 250) }}</td>
+                                    <td>
+                                        <div>
+                                          <a href="{{ action('Admin\PostController@edit', ['id' => $posts->id]) }}">編集</a>
+                                        </div>
+                                        <div>
+                                          <a href="{{ action('Admin\PostController@delete', ['id' => $posts->id]) }}">削除</a>
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
