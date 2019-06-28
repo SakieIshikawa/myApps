@@ -12,6 +12,8 @@
             <div class="col-md-8 mx-auto">
                 <h2>新規登録</h2>
                 <form action="{{ action('Admin\ProfileController@create') }}" method="post" enctype="multipart/form-data">
+                <!-- バリデーションでエラーを見つけたときには、Laravel が自動的に $errors という変数にエラーを格納
+                $errors は配列で、その要素がある場合はエラーと見なし、エラーメッセージを表示します。-->
 
                     @if (count($errors) > 0)
                         <ul>
