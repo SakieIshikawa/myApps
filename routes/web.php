@@ -31,10 +31,12 @@ Route::post('admin/profile/create', 'Admin\ProfileController@create')->middlewar
 Route::get('admin/profile/edit', 'Admin\ProfileController@edit')->middleware('auth');
 Route::post('admin/profile/edit', 'Admin\ProfileController@update')->middleware('auth');
 Route::get('admin/profile', 'Admin\ProfileController@index')->middleware('auth');  //profileの確認用
+Route::get('admin/profile/edit', 'Admin\ProfileController@edit')->middleware('auth');
+Route::post('admin/profile/edit', 'Admin\ProfileController@update')->middleware('auth');
+Route::get('admin/profile/delete', 'Admin\ProfileController@delete')->middleware('auth');
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
-// 氏名(name)、性別(gender)、趣味(hobby)、自己紹介欄(introduction)を入力するフォームを作成してください。
-// また、formの送信先(<form action=”この部分”>)を、 Admin\ProfileController の create Action に指定してください。

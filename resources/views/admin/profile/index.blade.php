@@ -34,6 +34,7 @@
                                 <th width="10%">ID</th>
                                 <th width="30%">名前</th>
                                 <th width="20%">性別</th>
+                                <th width="10%">編集</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,7 +42,15 @@
                                 <tr>
                                     <th>{{ $profiles->id }}</th>
                                     <td>{{ str_limit($profiles->name, 100) }}</td>
-                                    <td>{{ str_limit($profiles->gender, 250) }}</td>
+                                    <td>{{ str_limit($profiles->gender, 100) }}</td>
+                                    <td>
+                                      <div>
+                                        <a href="{{ action('Admin\ProfileController@edit', ['id' => $profiles->id]) }}">編集</a>
+                                      </div>
+                                      <div>
+                                        <a href="{{ action('Admin\ProfileController@delete', ['id' => $profiles->id]) }}">削除</a>
+                                      </div>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
