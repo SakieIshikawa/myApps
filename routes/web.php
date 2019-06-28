@@ -17,7 +17,9 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 Route::get('post/create', 'Admin\PostController@add');
 Route::post('post/create', 'Admin\PostController@create');
+Route::get('post', 'Admin\PostController@index')->middleware('auth');
 });
+
 //通常のページの表示にはgetを受け取り、フォームを送信したときに受け取る場合にはpostを受け取るように指定
 //->middleware('auth') 未ログインで管理画面にアクセスしようとしたらログイン画面にリダイレクトイレクト
 
@@ -25,6 +27,7 @@ Route::get('admin/profile/create', 'Admin\ProfileController@add')->middleware('a
 Route::post('admin/profile/create', 'Admin\ProfileController@create')->middleware('auth');
 Route::get('admin/profile/edit', 'Admin\ProfileController@edit')->middleware('auth');
 Route::post('admin/profile/edit', 'Admin\ProfileController@update')->middleware('auth');
+Route::get('admin/profile', 'Admin\ProfileController@index')->middleware('auth');  //profileの確認用
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

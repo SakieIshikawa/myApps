@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Post;
+use App\Post;    
+// 追加するとmodelが使えるようになる
 
 class PostController extends Controller
 {
@@ -40,5 +41,19 @@ class PostController extends Controller
 
     // admin/post/createにリダイレクトする
     return redirect('admin/post/create');
-  }  
+  } 
+
+  public function index(Request $request)
+  {
+      $cond_title = $request->cond_title;
+      if ($cond_title != '') {
+          // 検索されたら検索結果を取得する
+          $posts = Post::where('title', $cond_title)->get();
+      } else {
+          // それ以外はすべてを取得する
+          $posts = Post::all();
+      }
+      return view('admin.post.index', ['posts' => $posts, 'cond_title' => $cond_title]);
+  }
+
 }
