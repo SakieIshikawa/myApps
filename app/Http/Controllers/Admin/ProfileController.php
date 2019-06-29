@@ -22,16 +22,30 @@ class ProfileController extends Controller
       $profiles = new Profile;
       $form = $request->all();
 
+     
+      
       // フォームから送信されてきた_tokenを削除する
       unset($form['_token']);
     
       // データベースに保存する
-      $profiles->fill($form);
+      $profiles->file($form);
       $profiles->save();
 
       return redirect('admin/profile/create');
   }
-
+    public function index(Request $request)
+    {
+      $cond_name = $request->cond_name;
+        if ($cond_name != '') {
+          // 検索されたら検索結果を取得する
+          $posts = Profile::where('name', $cond_name)->get();
+        } else {
+          // それ以外はすべての名前を取得する
+          $posts = Profile::all();
+      }
+      return view('admin.profile.index', ['posts' => $posts, 'cond_name' => $cond_name]);
+    }
+    
     public function edit(Request $request)
     {
       // Modelからデータを取得する
@@ -48,8 +62,7 @@ class ProfileController extends Controller
       $profiles = Profile::find($request->id);
       $profile_form = $request->all();
 
-      unset($post_form['_token']);
-      unset($post_form['remove']);
+      unset($profile_form['_token']);
 
       // 該当するデータを上書きして保存する
       $profiles->fill($profile_form);
@@ -57,19 +70,6 @@ class ProfileController extends Controller
 
       return redirect('admin/profile');
   }
-
-    public function index(Request $request)
-    {
-      $cond_name = $request->cond_name;
-        if ($cond_name != '') {
-          // 検索されたら検索結果を取得する
-          $posts = Profile::where('name', $cond_name)->get();
-        } else {
-          // それ以外はすべての名前を取得する
-          $posts = Profile::all();
-      }
-      return view('admin.profile.index', ['posts' => $posts, 'cond_name' => $cond_name]);
-    }
     
      // delete Action  削除用
     public function delete(Request $request)
