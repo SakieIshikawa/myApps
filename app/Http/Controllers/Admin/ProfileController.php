@@ -18,64 +18,62 @@ class ProfileController extends Controller
   {
 
       $this->validate($request, Profile::$rules);
-
-      $profiles = new Profile;
+      $profile = new Profile;
       $form = $request->all();
 
-     
-      
       // フォームから送信されてきた_tokenを削除する
       unset($form['_token']);
     
       // データベースに保存する
-      $profiles->file($form);
-      $profiles->save();
+      $profile->fill($form);
+      $profile->save();
 
       return redirect('admin/profile/create');
   }
+  
     public function index(Request $request)
     {
       $cond_name = $request->cond_name;
         if ($cond_name != '') {
           // 検索されたら検索結果を取得する
-          $posts = Profile::where('name', $cond_name)->get();
+          $list = Profile::where('name', $cond_name)->get();
         } else {
           // それ以外はすべての名前を取得する
-          $posts = Profile::all();
+          $list = Profile::all();
       }
-      return view('admin.profile.index', ['posts' => $posts, 'cond_name' => $cond_name]);
+      return view('admin.profile.index', ['list' => $list, 'cond_name' => $cond_name]);
     }
     
     public function edit(Request $request)
     {
       // Modelからデータを取得する
-      $profiles = Profile::find($request->id);
-      if (empty($profiles)) {
+      $profile = Profile::find($request->id);
+      if (empty($profile)) {
         abort(404);    
       }
-      return view('admin.profile.edit', ['profile_form' => $profiles]);
+      return view('admin.profile.edit', ['profile_form' => $profile]);
     }
 
     public function update(Request $request)
   {
       $this->validate($request, Profile::$rules);
-      $profiles = Profile::find($request->id);
-      $profile_form = $request->all();
+      $profile = Profile::find($request->id);
 
+       
       unset($profile_form['_token']);
+      unset($profile_form['remove']);
 
-      // 該当するデータを上書きして保存する
-      $profiles->fill($profile_form);
-      $profiles->save();
-
-      return redirect('admin/profile');
-  }
-    
+       // 該当するデータを上書きして保存する
+      $profile->fill($profile_form)->save();
+ 
+       return redirect('admin/profile');
+   }
+     
      // delete Action  削除用
     public function delete(Request $request)
     {
-      $profiles = Profile::find($request->id);
-      $profiles->delete();
+      $profile = Profile::find($request->id);
+      $profile->delete();
       return redirect('admin/profile/');
     }
   }

@@ -98,7 +98,7 @@ class PostController extends Controller
   // delete Action  削除用
   public function delete(Request $request)
   {
-      // 該当するNews Modelを取得
+      // 該当する Modelを取得
       $posts = Post::find($request->id);
       // 削除する
       $posts->delete();
