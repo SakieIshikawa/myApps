@@ -38,18 +38,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($list as $profile)
+                            @foreach($list as $profiles)
                                 <tr>
-                                    <th>{{ $profile->id }}</th>
-                                    <td>{{ str_limit($profile->name, 100) }}</td>
-                                    <td>{{ str_limit($profile->gender, 100) }}</td>
+                                    <th>{{ $profiles->id }}</th>
+                                    <td>{{ str_limit($profiles->name, 100) }}</td>
+                                    <td>{{ str_limit($profiles->gender, 100) }}</td>
                                     
                                     <td>
                                       <div>
-                                        <a href="{{ action('Admin\ProfileController@edit', ['id' => $profile->id]) }}">編集</a>
+                                        <a href="{{ action('Admin\ProfileController@edit', ['id' => $profiles>id]) }}">編集</a>
                                       </div>
                                       <div>
-                                        <a href="{{ action('Admin\ProfileController@delete', ['id' => $profile->id]) }}">削除</a>
+                                        <a href="{{ action('Admin\ProfileController@delete', ['id' => $profiles->id]) }}">削除</a>
                                       </div>
                                     </td>
                                 </tr>
