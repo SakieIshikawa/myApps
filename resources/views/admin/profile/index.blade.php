@@ -46,7 +46,7 @@
                                     
                                     <td>
                                       <div>
-                                        <a href="{{ action('Admin\ProfileController@edit', ['id' => $profiles>id]) }}">編集</a>
+                                        <a href="{{ action('Admin\ProfileController@edit', ['id' => $profiles->id]) }}">編集</a>
                                       </div>
                                       <div>
                                         <a href="{{ action('Admin\ProfileController@delete', ['id' => $profiles->id]) }}">削除</a>

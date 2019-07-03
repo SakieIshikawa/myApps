@@ -12,4 +12,10 @@ class Post extends Model
         'title' => 'required',
         'body' => 'required',
     );
+
+    // Postモデルに関連付けを行う
+    public function histories()
+    {
+      return $this->hasMany('App\History');
+    }
 }

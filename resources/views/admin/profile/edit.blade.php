@@ -37,9 +37,14 @@
                             <textarea class="form-control" name="introduction" rows="10">{{ $profile_form->introduction }}</textarea>
                         </div>
                     </div>
-                    {{ csrf_field() }}
-                    <div class='btn-center'>
-                      <input type="submit" class="btn btn-primary" value="更新">
+                    <div class="form-group row">
+                        <div class="col-md-10">
+                          <div class='btn-center'>
+                            <input type="hidden" name="id" value="{{ $profile_form->id }}">
+                            {{ csrf_field() }}
+                            <input type="submit" class="btn btn-primary" value="更新">
+                          </div>
+                        </div>
                     </div>
                 </form>
             </div>

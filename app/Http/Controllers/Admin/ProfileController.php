@@ -56,18 +56,27 @@ class ProfileController extends Controller
 
     public function update(Request $request)
   {
-      $this->validate($request, Profile::$rules);
-      $profiles = Profile::find($request->id);
+    $this->validate($request, Profile::$rules);
+    //modelからデータの取得
+    $profiles = Profile::find($request->id);
+    // 送信されてきたフォームデータを格納
+    $profile_form = $request->all();
 
-       
-      unset($profile_form['_token']);
-      unset($profile_form['remove']);
+    if (isset($profile_form['image'])) {
+      $path = $request->file('image')->store('public/image');
+      $profiles->image_path = basename($path);
+      unset($profile_form['image']);
+    } elseif (0 == strcmp($request->remove, 'true')) {
+      $profiles->image_path = null;
+    }
+    unset($profile_form['_token']);
+    unset($profile_form['remove']);
+    // 該当するデータを上書きして保存する
+    $profiles->fill($profile_form);
+    $profiles->save();
 
-       // 該当するデータを上書きして保存する
-      $profiles->fill($profile_form)->save();
- 
-       return redirect('admin/profile');
-   }
+    return redirect('admin/profile');
+  }  
      
      // delete Action  削除用
     public function delete(Request $request)

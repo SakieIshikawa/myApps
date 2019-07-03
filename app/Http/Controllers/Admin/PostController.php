@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+//  以下に追加するとmodelが使えるようになる（記載しないとmodelが使えない）
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Post;    
-// 追加するとmodelが使えるようになる
+use App\Post;   
+use App\History;
+use Carbon\Carbon; 
 
 class PostController extends Controller
 {
@@ -74,27 +76,36 @@ class PostController extends Controller
       // Validationをかける
       $this->validate($request, Post::$rules);
       // Modelからデータを取得
-      $posts = Post::find($request->id);
+      $posts = Post::find($request->input('id'));
       // 送信されてきたフォームデータを格納
       $post_form = $request->all();
 
-      if (isset($post_form['image'])) {
-        $path = $request->file('image')->store('public/image');
-        $posts->image_path = basename($path);
-        unset($post_form['image']);
-      } elseif (0 == strcmp($request->remove, 'true')) {
-        $posts->image_path = null;
+      if ($request->input('remove')) {
+          $post_form['image_path'] = null;
+      } elseif ($request->file('image')) {
+          $path = $request->file('image')->store('public/image');
+          $post_form['image_path'] = basename($path);
+      } else {
+          $post_form['image_path'] = $posts->image_path;
       }
+
       unset($post_form['_token']);
+      unset($post_form['image']);
       unset($post_form['remove']);
 
       // 該当するデータを上書きして保存する
       $posts->fill($post_form);
       $posts->save();
 
-      return redirect('admin/post');
-  }
+      //ライブラリCarbonを使って取得した現在時刻を、Historyモデルのedited_atとして記録し保存
+      $history = new History;
+      $history->post_id = $posts->id;
+      $history->edited_at = Carbon::now();
+      $history->save();
 
+      return redirect('admin/post/');
+  }
+   
   // delete Action  削除用
   public function delete(Request $request)
   {
