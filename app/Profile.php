@@ -14,8 +14,8 @@ class Profile extends Model
     );
     /*名前と性別は必須入力としてバリデーションをかける*/
 
-    // Profileモデルに関連付けを行う
-    public function histories()
+    // ProfileモデルにProfileHistoryモデルの関連付けを行う
+    public function profile_histories()
     {
       return $this->hasMany('App\ProfileHistory');
     }

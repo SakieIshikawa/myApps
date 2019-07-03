@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Profile;
+use App\ProfileHistory;
+use Carbon\Carbon;
 
 
 class ProfileController extends Controller
@@ -56,26 +58,36 @@ class ProfileController extends Controller
 
     public function update(Request $request)
   {
+    // Validationをかける
     $this->validate($request, Profile::$rules);
-    //modelからデータの取得
-    $profiles = Profile::find($request->id);
+    // Modelからデータを取得
+    $profiles = Profile::find($request->input('id'));
     // 送信されてきたフォームデータを格納
     $profile_form = $request->all();
 
-    if (isset($profile_form['image'])) {
-      $path = $request->file('image')->store('public/image');
-      $profiles->image_path = basename($path);
-      unset($profile_form['image']);
-    } elseif (0 == strcmp($request->remove, 'true')) {
-      $profiles->image_path = null;
-    }
+    // if ($request->input('remove')) {
+    //     $profile_form['image_path'] = null;
+    // } elseif ($request->file('image')) {
+    //     $path = $request->file('image')->store('public/image');
+    //     $profile_form['image_path'] = basename($path);
+    // } else {
+    //     $profile_form['image_path'] = $profiles->image_path;
+    // }
+
     unset($profile_form['_token']);
     unset($profile_form['remove']);
+
     // 該当するデータを上書きして保存する
     $profiles->fill($profile_form);
     $profiles->save();
 
-    return redirect('admin/profile');
+    //ライブラリCarbonを使って取得した現在時刻を、ProfileHistoryモデルのedited_atとして記録し保存
+    $profile_history = new ProfileHistory;
+    $profile_history->profile_id = $profiles->id;
+    $profile_history->edited_at = Carbon::now();
+    $profile_history->save();
+
+    return redirect('admin/profile/');
   }  
      
      // delete Action  削除用
