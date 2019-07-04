@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-2" for="gender" name="gender" value="{{ old('gender') }}">性別</label>
+                        <label class="col-md-2" for="gender" name="gender" value="{{ old('gender.value') }}">性別</label>
                           <label for="gender"><input type="radio" name="gender" value="男">男</label>
                           <label for="gender"><input type="radio" name="gender" value="女">女</label>
                     </div>
