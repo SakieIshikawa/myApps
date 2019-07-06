@@ -74,6 +74,7 @@ class ProfileController extends Controller
     //     $profile_form['image_path'] = $profiles->image_path;
     // }
 
+
     unset($profile_form['_token']);
     unset($profile_form['remove']);
 

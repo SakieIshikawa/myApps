@@ -1,4 +1,4 @@
-@extends('layouts.profile')
+@extends('layouts.admin')
 @section('title', '登録済みprofileの一覧')
 
 @section('content')
@@ -42,7 +42,7 @@
                                 <tr>
                                     <th>{{ $profiles->id }}</th>
                                     <td>{{ str_limit($profiles->name, 100) }}</td>
-                                    <td>{{ str_limit($profiles->gender, 100) }}</td>
+                                    <td>{{ str_limit($profiles->gender ) }}</td>
                                     
                                     <td>
                                       <div>

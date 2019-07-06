@@ -21,10 +21,15 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-2" for="gender" name="gender" value="{{ $profile_form->gender }}">性別</label>
+                      <label class="col-md-2" for="email">メールアドレス：
+                      <div class="col-md-10">
+                        <input type="email" name="email" value="{{ $profile_form->email }}" placeholder="info@sample.com">
+</div>
+                    </div>
+                        <!-- <label class="col-md-2" for="gender" name="gender" value="{{ $profile_form->gender }}">性別</label>
                           <label for="gender"><input type="radio" name="gender" value="男">男</label>
                           <label for="gender"><input type="radio" name="gender" value="女">女</label>
-                    </div>
+                    </div> -->
                     <div class="form-group row">
                         <label class="col-md-2" for="hobby">趣味</label>
                         <div class="col-md-10">
