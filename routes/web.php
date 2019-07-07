@@ -38,5 +38,6 @@ Route::get('admin/profile/delete', 'Admin\ProfileController@delete')->middleware
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'PostController@index');
+Route::get('/profile', 'PostController@profile');
