@@ -2,8 +2,7 @@
 <!--  layouts/profile.blade.phpを読み込む
       profile.blade.phpの@yield('title')に'プロフィール'を埋め込む
       profile.blade.phpの@yield('content')に以下のタグを埋め込む　　-->
-
-@extends('layouts.profile')
+@extends('layouts.admin')
 @section('title', 'Profile新規作成')
 
 @section('content')
@@ -29,8 +28,14 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-2" for="email">メールアドレス</label>
-                          <input type="email" name="email" value="{{ old('email') }}">
+                      <label class="col-md-2" for="gender">性別</label>
+                      <div class="col-md-2">
+                        <select name="gender" class="form-control" value="{{ old('gender') }}">
+                          <option value="男性">男性</option>
+                          <option value="女性">女性</option>
+                          <option value="回答しない">回答しない</option>
+                        </select>
+                      </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2" for="hobby">趣味</label>

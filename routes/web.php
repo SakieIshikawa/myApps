@@ -36,7 +36,6 @@ Route::post('admin/profile/edit', 'Admin\ProfileController@update')->middleware(
 Route::get('admin/profile/delete', 'Admin\ProfileController@delete')->middleware('auth');
 
 
-
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
