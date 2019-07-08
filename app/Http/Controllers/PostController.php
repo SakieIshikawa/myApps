@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\HTML;
 
 use App\Post;
+use App\Profile;
 
 class PostController extends Controller
 {
@@ -26,11 +27,22 @@ class PostController extends Controller
         }
 
         // post/index.blade.php ファイルを渡している
-        // また View テンプレートに headline、 posts、 cond_title という変数を渡している
+        // View テンプレートにheadline、 posts、 cond_title という変数を渡している
         return view('post.index', ['headline' => $headline, 'posts' => $posts, 'cond_title' => $cond_title]);
     }
-    public function profile() 
+
+  public function profile(Request $request) 
     {
-    return view('post/profile');
+        $cond_name = $request->cond_name;
+
+        //$cond_name が空白でない場合は、記事を検索して取得する
+        if ($cond_name != '') {
+            $profiles = Profile::where('name', $cond_name).orderBy('updated_at', 'desc')->get();
+        } else {
+            $profiles = Profile::all()->sortByDesc('updated_at');
+        }
+        //post/profile.blade.php ファイルを渡している
+        // View テンプレートに profiles、 cond_name という変数を渡している
+    return view('post.profile', ['profiles' => $profiles, 'cond_name' => $cond_name]);
     }
 }

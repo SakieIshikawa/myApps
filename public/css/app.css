@@ -2732,14 +2732,19 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #3490dc;
-  border-color: #3490dc;
+  background-color: #FF1493;
+  opacity: 0.7;
+  border-radius: 10px;
+  width: 80%;
+  position: relative;
+  left: 15%;
+  top: 30px;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #227dc7;
-  border-color: #2176bd;
+  background-color: #FF1493;
+  opacity: 1;
 }
 
 .btn-primary:focus,

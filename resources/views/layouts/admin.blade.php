@@ -36,14 +36,22 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="#">Profile</a>
+                <a class="nav-link" href="profile">Profile</a>
               </li>
               <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
+                履歴/編集
                </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-             <a class="dropdown-item" href="admin/post/create">記事投稿</a>
+             <a class="dropdown-item" href="admin/post">記事編集</a>
+            <a class="dropdown-item" href="admin/profile">profile編集</a>
+      </li>
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                投稿/登録
+               </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+             <a class="dropdown-item" href="admin/post/create">新規記事投稿</a>
             <a class="dropdown-item" href="admin/profile/create">profile新規登録</a>
       </li>
     </ul>
