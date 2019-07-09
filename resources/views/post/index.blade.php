@@ -41,6 +41,7 @@
                                     {{ str_limit($post->body, 1500) }}
                                 </div>
                             </div>
+                            <i class="far fa-thumbs-up"></i>
                         </div>
                     </div>
                     <hr color="#c0c0c0">
