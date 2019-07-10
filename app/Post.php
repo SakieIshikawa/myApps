@@ -18,4 +18,9 @@ class Post extends Model
     {
       return $this->hasMany('App\History');
     }
+      // モデルにlikeモデルの関連付けを行う
+      public function likes()
+      {
+        return $this->hasMany('App\Like');
+      }
 }

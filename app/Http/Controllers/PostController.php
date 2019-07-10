@@ -20,15 +20,15 @@ class PostController extends Controller
             $posts = Post::all()->sortByDesc('updated_at');
         }
 
-        if (count($posts) > 0) {
-            $headline = $posts->shift();
-        } else {
-            $headline = null;
-        }
+        // if (count($posts) > 0) {
+        //     $headline = $posts->shift();
+        // } else {
+        //     $headline = null;
+        // }
 
         // post/index.blade.php ファイルを渡している
         // View テンプレートにheadline、 posts、 cond_title という変数を渡している
-        return view('post.index', ['headline' => $headline, 'posts' => $posts, 'cond_title' => $cond_title]);
+        return view('post.index', ['posts' => $posts, 'cond_title' => $cond_title]);
     }
 
   public function profile(Request $request) 
