@@ -25,7 +25,7 @@
                 </div>
             </div>
         @endif -->
-        <div class="row">
+  <div class="row">
             <div class="posts col-md-8 mx-auto mt-3">
                 @foreach($posts as $post)
                     <div class="post">
