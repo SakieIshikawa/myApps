@@ -16953,3 +16953,8 @@ readers do not read off random characters that represent icons */
   font-family: "Font Awesome 5 Brands";
 }
 
+.btn-center {
+  width: 20%;
+  margin: 0 auto;
+}
+
