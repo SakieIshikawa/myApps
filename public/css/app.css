@@ -2734,6 +2734,7 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #3490dc;
   border-color: #3490dc;
+  width: 100%;
 }
 
 .btn-primary:hover {
@@ -16951,10 +16952,5 @@ readers do not read off random characters that represent icons */
 
 .fab {
   font-family: "Font Awesome 5 Brands";
-}
-
-.btn-center {
-  width: 20%;
-  margin: 0 auto;
 }
 
