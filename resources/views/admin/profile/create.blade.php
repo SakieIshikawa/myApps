@@ -33,7 +33,6 @@
                         <select name="gender" class="form-control" value="{{ old('gender') }}">
                           <option value="男性">男性</option>
                           <option value="女性">女性</option>
-                          <option value="回答しない">回答しない</option>
                         </select>
                       </div>
                     </div>
