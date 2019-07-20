@@ -56,16 +56,6 @@ $primary-color: #079ad9;
   justify-content: center;
 }
 
-  //set dimensions for invisible container
-  .input-container {
-    position: relative;
-    height:  7rem;
-    width:  7rem;
-    margin: 0.5rem;
-
-  }
-    //make actual radio input invisible
-    // + stretch to fill container
     .radio-button {
       opacity: 0;
       position: absolute;
@@ -77,14 +67,11 @@ $primary-color: #079ad9;
       cursor: pointer;
     }
 
-    //default tile styles
     .radio-tile {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      width: 100%;
-      height: 100%;
       border: 2px solid $primary-color;
       border-radius: 5px;
       padding: 1rem;
@@ -112,7 +99,7 @@ $primary-color: #079ad9;
       transform: scale(1.1, 1.1);
     }
       
-      .icon svg {
+    .radio-button:checked + .radio-tile .icon svg {
         fill: white;
         background-color: $primary-color;
       }
