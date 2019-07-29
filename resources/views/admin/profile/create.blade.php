@@ -30,10 +30,10 @@
                     <div class="form-group row">
                       <label class="col-md-2" for="gender">性別</label>
                       <div class="col-md-2">
-                        <select name="gender" class="form-control" value="{{ old('gender') }}">
-                          <option value="男性">男性</option>
-                          <option value="女性">女性</option>
-                        </select>
+                      <input type="radio" id="gender1" name="gender" value="男性" class="form-control" value="{{ old('gender.value') }}">
+                          <label for="gender1">男性</label>
+                        <input type="radio" id="gender2" name="gender" value="女性" class="form-control" value="{{ old('gender.value') }}">
+                          <label for="gender2">女性</label>
                       </div>
                     </div>
                     <div class="form-group row">

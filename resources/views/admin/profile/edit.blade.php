@@ -22,10 +22,11 @@
                     </div>
                     <div class="form-group row">
                       <label class="col-md-2" for="gender">性別</label>
-                      <div class="col-md-2">
-                      <input type="radio" name="gender" class="form-control" value="{{ $profile_form->gender }}" id="">
-                          <option name='gender' value="男性">男性</option>
-                          <option name='gender' value="女性">女性</option>
+                      <div class="col-md-10">
+                        <input type="radio" id="gender1" name="gender" value="男性" class="form-control" value="{{ $profile_form->gender }}">
+                          <label for="gender1">男性</label>
+                        <input type="radio" id="gender2" name="gender" value="女性" class="form-control" value="{{ $profile_form->gender }}">
+                          <label for="gender2">女性</label>
                       </div>
                     </div>
                     <div class="form-group row">
@@ -48,7 +49,6 @@
                             <input type="submit" class="btn btn-primary" value="更新">
                           </div>
                         </div>
-                    </div>
                     </div>
                 </form>
                 <div class="row mt-5">
