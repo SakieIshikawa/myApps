@@ -2025,13 +2025,14 @@ pre code {
 
 .table-dark {
   color: #fff;
-  background-color: #343a40;
+  background-color: #f66d9b;
+  white-space: nowrap;
 }
 
 .table-dark th,
 .table-dark td,
 .table-dark thead th {
-  border-color: #454d55;
+  border-color: #fff;
 }
 
 .table-dark.table-bordered {
@@ -11091,12 +11092,14 @@ a.text-dark:focus {
   .table-dark td,
   .table-dark thead th,
   .table-dark tbody + tbody {
-    border-color: #dee2e6;
+    border-color: #fff;
+    background: hotpink;
   }
 
   .table .thead-dark th {
     color: inherit;
-    border-color: #dee2e6;
+    border-color: #fff;
+    background: hotpink;
   }
 }
 
@@ -16952,4 +16955,3 @@ readers do not read off random characters that represent icons */
 .fab {
   font-family: "Font Awesome 5 Brands";
 }
-
